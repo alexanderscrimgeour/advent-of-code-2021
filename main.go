@@ -2,6 +2,7 @@ package main
 
 import (
 	"adventofcode2021/day1"
+	"adventofcode2021/day2"
 	"flag"
 	"fmt"
 )
@@ -29,7 +30,11 @@ func main() {
 		fmt.Printf("\nAnswer: %d", answer)
 
 	case 2:
-		fallthrough
+		answer, err := day2.SolvePartOne(input)
+		if err != nil {
+			panic(fmt.Sprintf("Error calculating day 1 part 1 solution: ", err))
+		}
+		fmt.Printf("\nAnswer: %d", answer)
 	case 3:
 		fallthrough
 	case 4:
