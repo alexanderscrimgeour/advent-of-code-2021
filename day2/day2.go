@@ -52,11 +52,38 @@ func SolvePartOne(input []string) (int, error) {
 			loc = moveVertical(loc, -val)
 		}
 	}
-	ans := loc.X * loc.Y
+	// negate Y to get Depth in absolute terms
+	ans := loc.X * -loc.Y
 	return ans, nil
 }
 
-// func SolvePartTwo(input []string) (int, error) {
+func SolvePartTwo(input []string) (int, error) {
+	loc := Coord{0, 0}
+	aim := 0
 
-// 	return nil, nil
-// }
+	for _, instruction := range input {
+		args := strings.Split(instruction, " ")
+		if len(args) > 2 {
+			panic("instruction arguments contains too many parts")
+		}
+		cmd := args[0]
+		val, err := strconv.Atoi(args[1])
+		if err != nil {
+			panic(err)
+		}
+
+		switch cmd {
+		case fwd:
+			fmt.Printf("%d %d\n", val, val*aim)
+			loc = moveHorizontal(loc, val)
+			loc = moveVertical(loc, -val*aim)
+		case up:
+			aim -= val
+		case down:
+			aim += val
+		}
+	}
+	// negate Y to get Depth in absolute terms
+	ans := loc.X * -loc.Y
+	return ans, nil
+}

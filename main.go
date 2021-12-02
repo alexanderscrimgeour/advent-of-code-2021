@@ -32,7 +32,13 @@ func main() {
 	case 2:
 		answer, err := day2.SolvePartOne(input)
 		if err != nil {
-			panic(fmt.Sprintf("Error calculating day 1 part 1 solution: ", err))
+			panic(fmt.Sprintf("Error calculating day 2 part 1 solution: ", err))
+		}
+		fmt.Printf("\nAnswer: %d", answer)
+
+		answer, err = day2.SolvePartTwo(input)
+		if err != nil {
+			panic(fmt.Sprintf("Error calculating day 2 part 2 solution: ", err))
 		}
 		fmt.Printf("\nAnswer: %d", answer)
 	case 3:
